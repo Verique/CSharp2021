@@ -2,11 +2,11 @@
 using ArrayHelper;
 using RectangleHelper;
 
-namespace ConsoleApplicationHomework {
+namespace ConsoleApp {
     class Program {
         private const int Size = 10;
         private const int MaxValue = 100;
-        static void Main(string[] args) {
+        private static void Main(string[] args) {
             var inputArray = InitInputArray();
             Console.WriteLine("Массив : ");
             OutputArray(inputArray);
@@ -32,7 +32,7 @@ namespace ConsoleApplicationHomework {
 
         }
 
-        static int[] InitInputArray() {
+        private static int[] InitInputArray() {
             var array = new int[Size];
             var rng = new Random();
             for (var i = 0; i < Size; i++) {
@@ -41,7 +41,7 @@ namespace ConsoleApplicationHomework {
             return array;
         }
 
-        static int[,] InitInput2DArray() {
+        private static int[,] InitInput2DArray() {
             var array = new int[Size, Size];
             var rng = new Random();
             for (var i = 0; i < Size; i++)
@@ -51,14 +51,14 @@ namespace ConsoleApplicationHomework {
             return array;
         }
 
-        static void OutputArray(int[] array) {
+        private static void OutputArray(int[] array) {
             Console.Write("[ ");
             foreach (var value in array)
                 Console.Write("{0} ", value);
             Console.WriteLine("]");
         }
 
-        static void Output2DArray(int[,] array) {
+        private static void Output2DArray(int[,] array) {
             Console.WriteLine("[");
             for (var i = 0; i < Size; i++) {
                 Console.Write("  [ ");

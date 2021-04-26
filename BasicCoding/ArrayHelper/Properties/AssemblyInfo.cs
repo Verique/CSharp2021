@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RectangleHelper")]
+[assembly: AssemblyTitle("ArrayHelper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RectangleHelper")]
+[assembly: AssemblyProduct("ArrayHelper")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("CB7F3297-E733-44AB-92B9-CE184BDCCD3A")]
+[assembly: Guid("8B19663D-5F0A-432B-B215-DE59492D2128")]
 
 // Version information for an assembly consists of the following four values:
 //

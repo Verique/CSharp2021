@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{CB7F3297-E733-44AB-92B9-CE184BDCCD3A}</ProjectGuid>
-        <OutputType>Library</OutputType>
+        <ProjectGuid>{4CEC1A91-D374-4029-8B39-BE508A8E1FEC}</ProjectGuid>
+        <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>RectangleHelper</RootNamespace>
-        <AssemblyName>RectangleHelper</AssemblyName>
+        <RootNamespace>ConsoleApp</RootNamespace>
+        <AssemblyName>ConsoleApp</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -36,9 +36,12 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
+        <Reference Include="VariousHelpers, Version=0.0.0.0, Culture=neutral, PublicKeyToken=6574b7afb5461c7b">
+          <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\VariousHelpers\v4.0_0.0.0.0__6574b7afb5461c7b\VariousHelpers.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="AreaPerimeter.cs" />
+        <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
