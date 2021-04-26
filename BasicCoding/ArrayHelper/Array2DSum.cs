@@ -1,10 +1,16 @@
-﻿using System.Linq;
-namespace ArrayHelper {
-    public static class Array2DSum {
-        public static int SumOfPositivesIn2dArray(int[,] array) {
+﻿using System;
+using System.Linq;
+
+namespace ArrayHelper
+{
+    public static class Array2DSum
+    {
+        public static int SumOfPositivesIn2dArray(int[,] array)
+        {
             if (array == null)
                 throw new System.NullReferenceException();
-            return (from int value in array where (value > 0) select value).Sum();
+
+            return (array.Cast<int>().Sum());
         }
     }
 }
