@@ -1,5 +1,7 @@
 **/.idea
 
+*.dll
+*.exe
 *.suo
 *.user
 .vs/
