@@ -10,7 +10,8 @@ namespace ArrayHelper
             if (array == null)
                 throw new System.NullReferenceException();
 
-            return (array.Cast<int>().Sum());
+            return (array.Cast<int>().Where(t => t > 0).Sum());
+            
         }
     }
 }
