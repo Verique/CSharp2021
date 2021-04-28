@@ -12,9 +12,11 @@ namespace Students
         {
             if ((!email.Contains("@")) || (!email.Contains('.')))
                 throw new ArgumentException();
+            
             if (email.IndexOf('.') > email.IndexOf('@'))
                 throw new ArgumentException();
-            this._email = email;
+            
+            _email = email;
             _fullName = GetNameFromEmail(email);
         }
 
@@ -33,6 +35,7 @@ namespace Students
         {
             if (!(obj is Student student))
                 return false;
+            
             return this.GetHashCode().Equals(student.GetHashCode());
         }
 
@@ -41,20 +44,20 @@ namespace Students
             return this.ToString().GetHashCode();
         }
 
-        private string GetNameFromEmail(string email)
+        private static string GetNameFromEmail(string email)
         {
             var nameAndSurname = email.Remove(email.IndexOf('@')).Split('.');
             return string.Concat(FirstLetterToUpper(nameAndSurname[0]), ' ', FirstLetterToUpper(nameAndSurname[1]));
         }
 
-        private string FirstLetterToUpper(string input)
+        private static string FirstLetterToUpper(string input)
         {
-            return input.First().ToString().ToUpper() + input.Substring(1);
+            return string.Concat(input.First().ToString().ToUpper(), input.Substring(1));
         }
 
-        private string FirstLetterToLower(string input)
+        private static string FirstLetterToLower(string input)
         {
-            return input.First().ToString().ToLower() + input.Substring(1);
+            return string.Concat(input.First().ToString().ToLower(), input.Substring(1));
         }
     }
 }
