@@ -28,7 +28,6 @@ namespace Performance
             privateMemoryAfter = Process.GetCurrentProcess().PrivateMemorySize64;
             var structDelta = privateMemoryAfter - privateMemoryBefore;
             Console.WriteLine("Memory Delta after structs initialization : {0}", structDelta);
-            
             Console.WriteLine("Memory Delta between class and struct deltas : {0}", classDelta - structDelta);
 
             var sw = new Stopwatch();

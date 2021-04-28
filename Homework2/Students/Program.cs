@@ -27,6 +27,7 @@ namespace Students
             };
 
             Console.WriteLine("Dictionary contains {0} students : ", dict.Keys.Count);
+            
             foreach (var student in dict.Keys)
             {
                 Console.WriteLine(student.ToString());
