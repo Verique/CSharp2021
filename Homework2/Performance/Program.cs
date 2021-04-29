@@ -5,14 +5,15 @@ namespace Performance
 {
     internal class Program
     {
+        private const int ArraySize = 100000;
         public static void Main(string[] args)
         {
             var rnd = new Random();
             
             var privateMemoryBefore = Process.GetCurrentProcess().PrivateMemorySize64;
-            var classes = new C[100000];
+            var classes = new C[ArraySize];
             
-            for (var i = 0; i < 100000; i++)
+            for (var i = 0; i < ArraySize; i++)
                 classes[i] = new C(rnd.Next());
             
             var privateMemoryAfter = Process.GetCurrentProcess().PrivateMemorySize64;
@@ -20,9 +21,9 @@ namespace Performance
             Console.WriteLine("Memory Delta after classes initialization : {0}", classDelta);
 
             privateMemoryBefore = Process.GetCurrentProcess().PrivateMemorySize64;
-            var structs = new S[100000];
+            var structs = new S[ArraySize];
             
-            for (var i = 0; i < 100000; i++)
+            for (var i = 0; i < ArraySize; i++)
                 structs[i] = new S(rnd.Next());
             
             privateMemoryAfter = Process.GetCurrentProcess().PrivateMemorySize64;

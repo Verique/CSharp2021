@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Policy;
 
 namespace Students
 {
     internal class Program
-    {
+    { 
+        static Random rnd = new Random();
         public static void Main(string[] args)
         {
             var subjects = new string[] {"Maths", "PE", "Chemistry", "IT", "Literature", "French"};
@@ -28,19 +28,23 @@ namespace Students
 
             Console.WriteLine("Dictionary contains {0} students : ", dict.Keys.Count);
             
-            foreach (var student in dict.Keys)
+            foreach (var entry in dict)
             {
-                Console.WriteLine(student.ToString());
+                Console.Write("{0}, Subjects : ", entry.Key.ToString());
+
+                foreach (var subject in  entry.Value)
+                    Console.Write("{0} ", subject);
+                
+                Console.WriteLine();
             }
         }
 
         private static HashSet<string> GetRandomSubjects(string[] subjects)
         {
-            var rnd = new Random();
-            var max = subjects.Length - 1;
+            var max = subjects.Length;
             var result = new HashSet<string>();
 
-            for (var i = 0; i < 3; i++)
+            while (result.Count < 3)
                 result.Add(subjects[rnd.Next(max)]);
 
             return result;

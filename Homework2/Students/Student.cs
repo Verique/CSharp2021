@@ -5,8 +5,8 @@ namespace Students
 {
     public class Student
     {
-        private readonly string _fullName;
-        private readonly string _email;
+        private readonly string fullName;
+        private readonly string email;
 
         public Student(string email)
         {
@@ -16,19 +16,19 @@ namespace Students
             if (email.IndexOf('.') > email.IndexOf('@'))
                 throw new ArgumentException();
             
-            _email = email;
-            _fullName = GetNameFromEmail(email);
+            this.email = email;
+            fullName = GetNameFromEmail(email);
         }
 
         public Student(string name, string surname)
         {
-            _email = string.Concat(FirstLetterToLower(name), '.', FirstLetterToLower(surname), "@epam.com");
-            _fullName = string.Concat(name, ' ', surname);
+            email = string.Concat(FirstLetterToLower(name), '.', FirstLetterToLower(surname), "@epam.com");
+            fullName = string.Concat(name, ' ', surname);
         }
 
         public override string ToString()
         {
-            return _fullName;
+            return string.Concat(fullName, " ", email);
         }
 
         public override bool Equals(object obj)

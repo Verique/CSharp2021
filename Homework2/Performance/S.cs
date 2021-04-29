@@ -4,16 +4,16 @@ namespace Performance
 {
     public readonly struct S : IComparable<S>
     {
-        private readonly int _i;
+        private readonly int i;
 
         public S(int i)
         {
-            this._i = i;
+            this.i = i;
         }
 
         public int CompareTo(S other)
         {
-            return _i.CompareTo(other._i);
+            return this.i.CompareTo(other.i);
         }
     }
 }

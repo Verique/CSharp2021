@@ -4,16 +4,16 @@ namespace Performance
 {
     public class C : IComparable<C>
     {
-        private readonly int _i;
+        private readonly int i;
 
         public C(int i)
         {
-            _i = i;
+            this.i = i;
         }
 
         public int CompareTo(C other)
         {
-            return _i.CompareTo(other._i);
+            return this.i.CompareTo(other.i);
         }
     }
 }
