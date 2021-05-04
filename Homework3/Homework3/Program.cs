@@ -7,8 +7,8 @@ namespace Homework3
     {
         public static void Main(string[] args)
         {
-           string input, secondInput; 
-           
+           string input, secondInput;
+
            Console.Write("Input a string to count average word length in it : ");
            input = Console.ReadLine();
            Console.WriteLine("Average word length = {0:F}", input.AverageWordLength());
@@ -20,7 +20,7 @@ namespace Homework3
            secondInput = Console.ReadLine();
            Console.WriteLine("First string with letters doubled = {0}", input.DoubleLetters(secondInput));
            Console.WriteLine();
-           
+
            Console.Write("Input a number-string to add with another number-string: ");
            input = Console.ReadLine();
            Console.Write("Input another number-string : ");
@@ -38,7 +38,9 @@ namespace Homework3
            Console.WriteLine("Numbers are :");
 
            foreach (var number in numbers)
+           {
                Console.WriteLine(number);
+           }
         }
     }
 }

@@ -8,7 +8,9 @@ namespace Homework3
         public static double AverageWordLength(this string str)
         {
             if (str == null)
+            {
                 throw new NullReferenceException();
+            }
             
             var words = str.Split(' ');
             var lengthSum = 0;
@@ -26,7 +28,9 @@ namespace Homework3
             }
 
             if (wordsCount == 0)
+            {
                 throw new ArgumentException("There are no words in string");
+            }
 
             return (double)lengthSum / wordsCount;
         }
