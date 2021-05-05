@@ -1,10 +1,10 @@
 ﻿namespace ComputerGame
 {
-    public class Bonus
+    public abstract class Bonus
     {
-        const int DefaultScore = 5;
+        private const int DefaultScore = 5;
         
-        public Bonus(double xPos, double yPos)
+        protected Bonus(double xPos, double yPos)
         {
             XPos = xPos;
             YPos = yPos;

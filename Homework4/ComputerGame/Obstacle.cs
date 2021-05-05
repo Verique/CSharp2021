@@ -1,8 +1,8 @@
 ﻿namespace ComputerGame
 {
-    public class Obstacle
+    public abstract class Obstacle
     {
-        public Obstacle(double obstacleSize, double obstaclePosX, double obstaclePosY)
+        protected Obstacle(double obstacleSize, double obstaclePosX, double obstaclePosY)
         {
             ObstacleSize = obstacleSize;
             ObstaclePosX = obstaclePosX;

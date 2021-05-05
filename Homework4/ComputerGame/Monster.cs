@@ -1,10 +1,10 @@
 ﻿namespace ComputerGame
 {
-    public class Monster
+    public abstract class Monster
     {
-        public double DefaultSpeed = 3;
-        
-        public Monster(double xPos, double yPos)
+        private const double DefaultSpeed = 3;
+
+        protected Monster(double xPos, double yPos)
         {
             XPos = xPos;
             YPos = yPos;
