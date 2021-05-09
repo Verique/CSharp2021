@@ -6,7 +6,6 @@ namespace StringToInt
 {
     public class StringNumber
     {
-        private static ILogger logger;
         private const string Digits = "0123456789";
         private const int NumeralSystem = 10;
         private readonly string strValue;
@@ -35,13 +34,8 @@ namespace StringToInt
             
             SetIntValue();
             
-            logger.LogInformation("New StringNumber created :");
-            logger.LogInformation($"String : {str}, isNegative : {isNegative}, strValue : {strValue}, intValue : {intValue}");
-        }
-
-        public static void SetLogger(ILogger newLogger)
-        {
-            logger = newLogger;
+            LoggerWrapper.MyLogger?.LogInformation("New StringNumber created :");
+            LoggerWrapper.MyLogger?.LogInformation($"String : {str}, isNegative : {isNegative}, strValue : {strValue}, intValue : {intValue}");
         }
 
         public int GetInt() => intValue;
@@ -63,7 +57,7 @@ namespace StringToInt
                 }
                 catch (OverflowException e)
                 {
-                    logger.LogError(e, e.Message);
+                    LoggerWrapper.MyLogger?.LogError(e, e.Message);
                     throw new ArgumentException($"Value {strValue} is bigger than integer");
                 }
             }

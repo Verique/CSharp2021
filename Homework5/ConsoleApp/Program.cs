@@ -14,7 +14,7 @@ namespace ConsoleApp
         public static void Main(string[] args)
         {
             ConfigureLogger();
-            StringToIntExt.SetLogger(GetILogger());
+            StringToInt.LoggerWrapper.MyLogger = GetILogger();
             
             Console.Write("Enter an integer : ");
             var input = Console.ReadLine();
