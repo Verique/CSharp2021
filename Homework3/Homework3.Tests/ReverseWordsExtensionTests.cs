@@ -12,7 +12,7 @@ namespace Homework3.Tests
         {
             string str = null;
             
-            Assert.That(str.ReverseWords(), Throws.Exception.TypeOf<NullReferenceException>());
+            Assert.That(() => str.ReverseWords(), Throws.Exception.TypeOf<NullReferenceException>());
         }
 
         [Test]
