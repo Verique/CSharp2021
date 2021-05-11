@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace StringToInt.Tests
 {
@@ -22,26 +25,36 @@ namespace StringToInt.Tests
                 new TestCaseData(int.MaxValue.ToString(), int.MaxValue),
                 new TestCaseData(int.MinValue.ToString(), int.MinValue),
             });
+
+        ILogger loggerMock = Mock.Of<ILogger>();
+        
+        [Test]
+        public void StringToInt_LoggerIsNull_ThrownNullArgumentException()
+        {
+            const string str = "test string";
+
+            Assert.That(() => str.ToInt(null), Throws.ArgumentNullException);
+        }
         
         [Test]
         public void StringToInt_WrongString_ThrownArgumentException([ValueSource(nameof(wrongStringList))] string str)
         {
-            Assert.That(str.ToInt, Throws.ArgumentException);
+            Assert.That(() => str.ToInt(loggerMock), Throws.ArgumentException);
         }
         
         [Test]
         public void StringToInt_NullString_ThrownArgumentNullException()
         {
             string str = null;
-            
-            Assert.That(str.ToInt, Throws.ArgumentNullException);
+            Assert.That(() => str.ToInt(loggerMock), Throws.ArgumentNullException);
         }
         
         [Test]
         [TestCaseSource(nameof(correctStringTestCases))]
         public void StringToInt_CorrectString_ReturnedExpectedInt(string str, int expected)
         {
-            Assert.That(str.ToInt, Is.EqualTo(expected));
+            var actual = str.ToInt(loggerMock);
+            Assert.AreEqual(expected, actual);
         }
 
     }

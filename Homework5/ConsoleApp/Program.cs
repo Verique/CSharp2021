@@ -14,14 +14,12 @@ namespace ConsoleApp
         public static void Main(string[] args)
         {
             ConfigureLogger();
-            StringToInt.LoggerWrapper.MyLogger = GetILogger();
-            
             Console.Write("Enter an integer : ");
             var input = Console.ReadLine();
             
             try
             {
-                var intValue = input.ToInt();
+                var intValue = input.ToInt(GetILogger());
                 Console.WriteLine($"Your integer : {intValue}");
             }
             catch (ArgumentException e)
@@ -42,7 +40,7 @@ namespace ConsoleApp
             NLog.LogManager.Configuration = config;
         }
 
-        private static ILogger GetILogger()
+        private static ILogger<Program> GetILogger()
         {
             var services = new ServiceCollection();
             services.AddLogging(builder => builder.AddNLog(NLog.LogManager.Configuration));

@@ -5,28 +5,21 @@ namespace StringToInt
 {
     public static class StringToIntExt
     {
-        public static int ToInt(this string str)
+        public static int ToInt(this string str, ILogger logger)
         {
+            if (logger is null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+            
             if (str is null)
             {
                 var e = new ArgumentNullException(nameof(str));
-                LoggerWrapper.MyLogger?.LogError(e, e.Message);
+                logger.LogError(e, e.Message);
                 throw e;
             }
 
-            int result;
-            
-            try
-            {
-                result = new StringNumber(str).GetInt();
-            }
-            catch (ArgumentException e)
-            {
-                LoggerWrapper.MyLogger?.LogError(e, e.Message);
-                throw;
-            }
-            
-            return result;
+            return new StringNumber(str, logger).GetInt(); 
         }
     }
 }

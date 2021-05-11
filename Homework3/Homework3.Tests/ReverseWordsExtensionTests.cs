@@ -21,9 +21,9 @@ namespace Homework3.Tests
             const string str = "The greatest victory is that which requires no battle";
             const string expected = "battle no requires which that is victory greatest The";
 
-            var reversedStr = str.ReverseWords();
+            var actual = str.ReverseWords();
             
-            Assert.That(reversedStr, Is.EqualTo(expected));
+            Assert.AreEqual(expected, actual);
         }
     }
 }

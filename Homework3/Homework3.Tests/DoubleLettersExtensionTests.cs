@@ -20,9 +20,9 @@ namespace Homework3.Tests
         [TestCase("test string", "test", "tteesstt ssttring")]
         public void DoubleLetters_CorrectInput_ReturnedDoubleLetteredString(string to, string from, string expected)
         {
-            var result = to.DoubleLetters(from);
+            var actual = to.DoubleLetters(from);
             
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -31,9 +31,10 @@ namespace Homework3.Tests
         [TestCase("hi","yo")]
         public void DoubleLetters_NoSameLetters_ReturnedStringTo(string to, string from)
         {
-            var result = to.DoubleLetters(from);
+            var actual = to.DoubleLetters(from);
+            var expected = to;
             
-            Assert.That(result, Is.EqualTo(to));
+            Assert.AreEqual(expected, actual);
         }
     }   
 }

@@ -6,27 +6,41 @@ namespace StringToInt
 {
     public class StringNumber
     {
+        private ILogger logger; 
         private const string Digits = "0123456789";
         private const int NumeralSystem = 10;
         private readonly string strValue;
         private readonly bool isNegative;
         private int intValue;
 
-        public StringNumber(string str)
+        public StringNumber(string str, ILogger logger)
         {
+            if (logger is null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
+
+            this.logger = logger;
+            
             if (str is null)
             {
-                throw new ArgumentNullException(nameof(str));
+                var e = new ArgumentNullException(nameof(str));
+                logger.LogError(e, e.Message);
+                throw e;
             }
             
             if (str.Count(ch => "+-".Contains(ch)) > 1)
             {
-                throw new ArgumentException();
+                var e = new ArgumentException();
+                logger.LogError(e, e.Message);
+                throw e;
             }
 
             if (!str.Trim().TrimStart("+-".ToCharArray()).All(char.IsDigit))
             {
-                throw new ArgumentException($"String {str} is not an integer value");
+                var e = new ArgumentException($"String {str} is not an integer value");
+                logger.LogError(e, e.Message);
+                throw e;
             }
 
             isNegative = (str.Trim()[0] == '-');
@@ -39,8 +53,8 @@ namespace StringToInt
             
             SetIntValue();
             
-            LoggerWrapper.MyLogger?.LogInformation("New StringNumber created :");
-            LoggerWrapper.MyLogger?.LogInformation($"String : {str}, isNegative : {isNegative}, strValue : {strValue}, intValue : {intValue}");
+            logger.LogInformation("New StringNumber created :");
+            logger.LogInformation($"String : {str}, isNegative : {isNegative}, strValue : {strValue}, intValue : {intValue}");
         }
 
         public int GetInt() => intValue;
@@ -67,8 +81,10 @@ namespace StringToInt
                 }
                 catch (OverflowException e)
                 {
-                    LoggerWrapper.MyLogger?.LogError(e, e.Message);
-                    throw new ArgumentException($"Value {strValue} is bigger than integer");
+                    logger.LogError(e, e.Message);
+                    var ex = new ArgumentException($"Value {strValue} is bigger than integer");
+                    logger.LogError(ex, ex.Message);
+                    throw ex;
                 }
             }
         }

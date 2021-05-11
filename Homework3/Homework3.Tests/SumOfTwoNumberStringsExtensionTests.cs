@@ -31,9 +31,9 @@ namespace Homework3.Tests
         [TestCaseSource(nameof(testCaseData))]
         public void SumOfTwoNumberStrings_TwoNumbersGiven_ReturnedSum(string a, string b, string expected)
         {
-            var result = a.SumOfTwoNumberStrings(b);
+            var actual = a.SumOfTwoNumberStrings(b);
 
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.AreEqual(actual, (expected));
         }
     }
 }

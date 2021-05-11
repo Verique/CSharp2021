@@ -30,9 +30,9 @@ namespace Homework3.Tests
         [TestCase("aaaaa", 5)]
         public void AverageWordLength_AverageIsKnown_ReturnedCorrectLength(string str, double expected)
         {
-            var result = str.AverageWordLength();
+            var actual = str.AverageWordLength();
             
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.AreEqual(actual, expected);
         }
     }
 }
