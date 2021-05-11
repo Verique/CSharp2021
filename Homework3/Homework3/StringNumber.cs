@@ -18,13 +18,18 @@ namespace Homework3
                 throw new ArgumentException();
             }
 
-            if (!str.Trim().Trim("+-".ToCharArray()).All(char.IsDigit))
+            if (str.Count(ch => "+-".Contains(ch)) > 1)
+            {
+                throw new ArgumentException();
+            }
+
+            if (!str.Trim().TrimStart("+-".ToCharArray()).All(char.IsDigit))
             {
                 throw new ArgumentException();
             }
 
             isNegative = (str.Trim()[0] == '-');
-            strValue = str.Trim().Trim("+-".ToCharArray()).TrimStart('0');
+            strValue = str.Trim().TrimStart("+-".ToCharArray()).TrimStart('0');
             
             if (string.IsNullOrWhiteSpace(strValue))
             {
