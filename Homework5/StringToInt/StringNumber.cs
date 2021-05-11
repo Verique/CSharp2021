@@ -18,6 +18,11 @@ namespace StringToInt
             {
                 throw new ArgumentNullException(nameof(str));
             }
+            
+            if (str.Count(ch => "+-".Contains(ch)) > 1)
+            {
+                throw new ArgumentException();
+            }
 
             if (!str.Trim().Trim("+-".ToCharArray()).All(char.IsDigit))
             {
@@ -48,6 +53,11 @@ namespace StringToInt
             {
                 var digit = Digits.IndexOf(strValue[i]);
 
+                if (isNegative)
+                {
+                    digit = -digit;
+                }
+
                 try
                 {
                     checked
@@ -60,11 +70,6 @@ namespace StringToInt
                     LoggerWrapper.MyLogger?.LogError(e, e.Message);
                     throw new ArgumentException($"Value {strValue} is bigger than integer");
                 }
-            }
-
-            if (isNegative)
-            {
-                intValue *= -1;
             }
         }
     }
