@@ -24,13 +24,13 @@ namespace StringToInt
                 throw new ArgumentException();
             }
 
-            if (!str.Trim().Trim("+-".ToCharArray()).All(char.IsDigit))
+            if (!str.Trim().TrimStart("+-".ToCharArray()).All(char.IsDigit))
             {
                 throw new ArgumentException($"String {str} is not an integer value");
             }
 
             isNegative = (str.Trim()[0] == '-');
-            strValue = str.Trim().Trim("+-".ToCharArray()).TrimStart('0');
+            strValue = str.Trim().TrimStart("+-".ToCharArray()).TrimStart('0');
 
             if (string.IsNullOrWhiteSpace(strValue))
             {
