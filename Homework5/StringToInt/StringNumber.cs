@@ -13,33 +13,28 @@ namespace StringToInt
         private readonly bool isNegative;
         private int intValue;
 
-        public StringNumber(string str, ILogger logger)
+        public StringNumber(string str, ILogger logger = null)
         {
-            if (logger is null)
-            {
-                throw new ArgumentNullException(nameof(logger));
-            }
-
             this.logger = logger;
             
             if (str is null)
             {
                 var e = new ArgumentNullException(nameof(str));
-                logger.LogError(e, e.Message);
+                logger?.LogError(e, e.Message);
                 throw e;
             }
             
             if (str.Count(ch => "+-".Contains(ch)) > 1)
             {
                 var e = new ArgumentException();
-                logger.LogError(e, e.Message);
+                logger?.LogError(e, e.Message);
                 throw e;
             }
 
             if (!str.Trim().TrimStart("+-".ToCharArray()).All(char.IsDigit))
             {
                 var e = new ArgumentException($"String {str} is not an integer value");
-                logger.LogError(e, e.Message);
+                logger?.LogError(e, e.Message);
                 throw e;
             }
 
@@ -53,8 +48,8 @@ namespace StringToInt
             
             SetIntValue();
             
-            logger.LogInformation("New StringNumber created :");
-            logger.LogInformation($"String : {str}, isNegative : {isNegative}, strValue : {strValue}, intValue : {intValue}");
+            logger?.LogInformation("New StringNumber created :");
+            logger?.LogInformation($"String : {str}, isNegative : {isNegative}, strValue : {strValue}, intValue : {intValue}");
         }
 
         public int GetInt() => intValue;
@@ -81,9 +76,9 @@ namespace StringToInt
                 }
                 catch (OverflowException e)
                 {
-                    logger.LogError(e, e.Message);
+                    logger?.LogError(e, e.Message);
                     var ex = new ArgumentException($"Value {strValue} is bigger than integer");
-                    logger.LogError(ex, ex.Message);
+                    logger?.LogError(ex, ex.Message);
                     throw ex;
                 }
             }

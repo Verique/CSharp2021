@@ -29,14 +29,6 @@ namespace StringToInt.Tests
         ILogger loggerMock = Mock.Of<ILogger>();
         
         [Test]
-        public void StringToInt_LoggerIsNull_ThrownNullArgumentException()
-        {
-            const string str = "test string";
-
-            Assert.That(() => str.ToInt(null), Throws.ArgumentNullException);
-        }
-        
-        [Test]
         public void StringToInt_WrongString_ThrownArgumentException([ValueSource(nameof(wrongStringList))] string str)
         {
             Assert.That(() => str.ToInt(loggerMock), Throws.ArgumentException);
