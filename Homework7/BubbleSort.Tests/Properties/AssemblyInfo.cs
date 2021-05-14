@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ConsoleAppEvents")]
+[assembly: AssemblyTitle("BubbleSort.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConsoleAppEvents")]
+[assembly: AssemblyProduct("BubbleSort.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("773D1ACA-0BD0-4204-982A-D72CCDBEDDFD")]
+[assembly: Guid("27C308DF-60B4-41B2-A773-5DBFA6DA2A78")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 
-namespace ConsoleApp
+namespace BubbleSort
 {
     internal class Program
     {

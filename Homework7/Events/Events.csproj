@@ -7,8 +7,8 @@
         <ProjectGuid>{773D1ACA-0BD0-4204-982A-D72CCDBEDDFD}</ProjectGuid>
         <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>ConsoleAppEvents</RootNamespace>
-        <AssemblyName>ConsoleAppEvents</AssemblyName>
+        <RootNamespace>Events</RootNamespace>
+        <AssemblyName>Events</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -45,9 +45,9 @@
         <Compile Include="Subscriber.cs" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\ConsoleApp\ConsoleApp.csproj">
+      <ProjectReference Include="..\BubbleSort\BubbleSort.csproj">
         <Project>{d3e74954-1293-4294-a56b-bdf1ea8d82b8}</Project>
-        <Name>ConsoleApp</Name>
+        <Name>BubbleSort</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

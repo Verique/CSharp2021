@@ -1,32 +1,34 @@
 ﻿using System;
+using System.Threading;
 
-namespace ConsoleAppEvents
+namespace Events
 {
-    public class Subscriber
+    public class AnotherSubscriber
     {
         private string receivedMessage;
-
-        public Subscriber()
+        public AnotherSubscriber()
         {
             receivedMessage = "";
         }
         
-        public void Subscribe(Countdown countdown)
+        public void Subscribe(Countdown countdown, int milliseconds)
         {
             if (countdown is null)
             {
                 throw new ArgumentNullException(nameof(countdown));
             }
             
-            countdown.Subscribe(GetMessage);
+            countdown.Subscribe(() => GetMessage(milliseconds));
         }
 
-        private void GetMessage()
+        private void GetMessage(int milliseconds)
         {
+            Thread.Sleep(milliseconds);
             var message = $"Message from {this}";
             receivedMessage = message;
             Console.WriteLine(receivedMessage);
         }
         
     }
+
 }

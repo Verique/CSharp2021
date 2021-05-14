@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ConsoleApp
+namespace BubbleSort
 {
     public static class BubbleSort
     {
@@ -86,7 +86,7 @@ namespace ConsoleApp
 
                 for (var index = 1; index < array.Length; index++)
                 {
-                    if (max > array[index])
+                    if (max < array[index])
                     {
                         max = array[index];
                     }
@@ -106,7 +106,7 @@ namespace ConsoleApp
 
                 for (var index = 1; index < array.Length; index++)
                 {
-                    if (min < array[index])
+                    if (min > array[index])
                     {
                         min = array[index];
                     }
