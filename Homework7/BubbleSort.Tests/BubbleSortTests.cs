@@ -6,7 +6,7 @@ namespace BubbleSort.Tests
     [TestFixture]
     public class BubbleSortTests
     {
-        private Func<int[], int[], bool>[] comparisons = new Func<int[], int[], bool>[]
+        private static Func<int[], int[], bool>[] comparisons = new Func<int[], int[], bool>[]
         {
             BubbleSort.Comparison.RowMaxComparison,
             BubbleSort.Comparison.RowMinComparison,
@@ -21,24 +21,33 @@ namespace BubbleSort.Tests
         };
 
         [Test]
-        public void RowComparisons_ArrayIsNull_ArgumentNullExceptionThrown()
+        public void RowComparisons_ArrayIsNull_ArgumentNullExceptionThrown([ValueSource(nameof(comparisons))] Func<int[], int[], bool> comparison)
         {
-            foreach (var comparison in comparisons)
-            {
-                Assert.That(() => comparison(null, null), Throws.ArgumentNullException);
-            }
+            Assert.That(() => comparison(null, null), Throws.ArgumentNullException);
         }
 
         [Test]
-        [TestCase(new int[] {1, 5, 4}, new int[] {0, 2, 2}, true)]
-        [TestCase(new int[] {0, 5, 4}, new int[] {1, 9, 9}, false)]
-        public void RowComparison_ArraysAreCorrect_ReturnedExpected(int[] a, int[] b, bool expected)
+        public void RowComparison_FirstIsBigger_ReturnedTrue([ValueSource(nameof(comparisons))] Func<int[], int[], bool> comparison)
         {
-            foreach (var comparison in comparisons)
-            {
-                var actual = comparison(a, b);
-                Assert.That(actual, Is.EqualTo(expected));
-            }
+            var a = new int[] {1, 5, 4};
+            var b = new int[] {0, 2, 2};
+            const bool expected = true;
+            
+            var actual = comparison(a, b);
+            
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+        
+        [Test]
+        public void RowComparison_FirstIsLesser_ReturnedFalse([ValueSource(nameof(comparisons))] Func<int[], int[], bool> comparison)
+        {
+            var a = new int[] {0, 5, 4};
+            var b = new int[] {1, 9, 9};
+            const bool expected = false;
+            
+            var actual = comparison(a, b);
+            
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -58,23 +67,20 @@ namespace BubbleSort.Tests
         }
 
         [Test]
-        public void BubbleSort_ArrayCorrect_ArrayIsSorted()
+        public void BubbleSort_ArrayCorrect_ArrayIsSorted([ValueSource(nameof(comparisons))] Func<int[], int[], bool> comparison)
         {
-            foreach (var comparison in comparisons)
+            var actual = array;
+            var expected = new int[,]
             {
-                var actual = array;
-                var expected = new int[,]
-                {
-                    {2, 3, 4},
-                    {1, 2, 3},
-                    {0, 1, 2}
-                };
-                BubbleSort.ComparisonMethod = comparison;
+                {2, 3, 4},
+                {1, 2, 3},
+                {0, 1, 2}
+            };
+            BubbleSort.ComparisonMethod = comparison;
 
-                actual.BubbleSortMatrix(false);
+            actual.BubbleSortMatrix(false);
 
-                Assert.That(actual, Is.EqualTo(expected));
-            }
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }
 }
