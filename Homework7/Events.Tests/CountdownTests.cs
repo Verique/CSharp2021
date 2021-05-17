@@ -1,4 +1,5 @@
 ﻿using System;
+using Moq;
 using NUnit.Framework;
 
 namespace Events.Tests
@@ -6,20 +7,14 @@ namespace Events.Tests
     [TestFixture]
     public class CountdownTests
     {
-        [Test]
-        public void Subscribe_MethodIsNull_ArgumentNullExceptionThrown()
-        {
-            var target = new Countdown();
-            Assert.That(() => target.Subscribe(null), Throws.ArgumentNullException);
-        }
         
         [Test]
-        public void Subscribe_MethodIsCorrect_NothingThrown()
+        public void AddSubscriber_MethodIsCorrect_NothingThrown()
         {
             var target = new Countdown();
-            Action action = () => { };
+            var subscriber = Mock.Of<ICountdownSubscriber>();
             
-            Assert.That(() => target.Subscribe(action), Throws.Nothing);
+            Assert.That(() => target.AddSubscriber(subscriber), Throws.Nothing);
         }
         
         [Test]
@@ -33,9 +28,9 @@ namespace Events.Tests
         public void Invoke_CorrectMethod_NothingThrown()
         {
             var target = new Countdown();
-            Action action = () => { };
+            var subscriber = Mock.Of<ICountdownSubscriber>();
             
-            target.Subscribe(action);
+            target.AddSubscriber(subscriber);
             
             Assert.That(target.Invoke, Throws.Nothing);
         }

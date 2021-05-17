@@ -3,32 +3,25 @@ using System.Threading;
 
 namespace Events
 {
-    public class AnotherSubscriber
+    public class AnotherSubscriber : ICountdownSubscriber
     {
         private string receivedMessage;
-        public AnotherSubscriber()
+        private int messageDelay;
+
+        public AnotherSubscriber(int delay)
         {
             receivedMessage = "";
-        }
-        
-        public void Subscribe(Countdown countdown, int milliseconds)
-        {
-            if (countdown is null)
-            {
-                throw new ArgumentNullException(nameof(countdown));
-            }
-            
-            countdown.Subscribe(() => GetMessage(milliseconds));
+            messageDelay = delay;
         }
 
-        private void GetMessage(int milliseconds)
+        private void GetMessageAfter(int milliseconds)
         {
             Thread.Sleep(milliseconds);
             var message = $"Message from {this}";
             receivedMessage = message;
             Console.WriteLine(receivedMessage);
         }
-        
-    }
 
+        public void GetMessage() => GetMessageAfter(messageDelay);
+    }
 }

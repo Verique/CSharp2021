@@ -20,27 +20,28 @@ namespace BubbleSort
                     testArray[i, j] = rnd.Next(-100, 100);
                 }
             }
+
+            var rowMaxComparison = new RowMaxComparison();
+            var rowMinComparison = new RowMinComparison();
+            var rowSumComparison = new RowSumComparison();
             
             Console.WriteLine("Array :");
             OutputMatrix(testArray);
             
             Console.WriteLine("Array after row sum sort : ");
-            BubbleSort.ComparisonMethod = BubbleSort.Comparison.RowSumComparison;
-            testArray.BubbleSortMatrix();
+            testArray.BubbleSortMatrix(rowSumComparison);
             OutputMatrix(testArray);
             
             Console.WriteLine("Array after row min sort : ");
-            BubbleSort.ComparisonMethod = BubbleSort.Comparison.RowMinComparison;
-            testArray.BubbleSortMatrix();
+            testArray.BubbleSortMatrix(rowMinComparison);
             OutputMatrix(testArray);
             
             Console.WriteLine("Array after row min descending sort : ");
-            testArray.BubbleSortMatrix(false);
+            testArray.BubbleSortMatrix(rowMinComparison, false);
             OutputMatrix(testArray);
             
             Console.WriteLine("Array after row max sort : ");
-            BubbleSort.ComparisonMethod = BubbleSort.Comparison.RowMaxComparison;
-            testArray.BubbleSortMatrix();
+            testArray.BubbleSortMatrix(rowMaxComparison);
             OutputMatrix(testArray);
 
         }

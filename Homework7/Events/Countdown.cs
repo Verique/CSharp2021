@@ -25,9 +25,14 @@ namespace Events
             Task.WaitAll(tasks);
         }
 
-        public void Subscribe(Action method)
+        private void Subscribe(Action method)
         {
             CountdownMessage += method ?? throw new ArgumentNullException();
+        }
+
+        public void AddSubscriber(ICountdownSubscriber subscriber)
+        {
+            Subscribe(subscriber.GetMessage);
         }
     }
 }
