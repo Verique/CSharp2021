@@ -17,6 +17,11 @@ namespace GenericCollectionsLibrary
                 throw new ArgumentNullException(nameof(element));
             }
 
+            if (array.Length == 0)
+            {
+                return -1;
+            }
+
             if (!array.IsSortedAscending<T>())
             {
                 throw new ArgumentException("Array is not sorted");

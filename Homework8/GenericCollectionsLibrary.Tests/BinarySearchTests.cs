@@ -28,6 +28,9 @@ namespace GenericCollectionsLibrary.Tests
         }
 
         [Test]
+        [TestCase(new int[] {}, 1, -1)]
+        [TestCase(new int[] {0}, 0, 0)]
+        [TestCase(new int[] {0, 1}, 0, 0)]
         [TestCase(new int[] {1, 6, 20, 46, 80, 223, 1000}, 6, 1)]
         [TestCase(new int[] {1, 6, 20, 46, 80, 223, 1000}, 80, 4)]
         [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 6, 1)]

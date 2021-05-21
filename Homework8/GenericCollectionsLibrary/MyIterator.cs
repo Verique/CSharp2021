@@ -1,27 +1,39 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace GenericCollectionsLibrary
 {
-    public class MyIterator<T> : IMyIterator<T>
+    public class MyIterator<T> : IEnumerator<T>
     {
-        private Node<T> node;
+        private readonly Node<T> headNode;
+        private Node<T> currentNode;
 
         public bool MoveNext()
         {
-            if (node is null)
+            if (currentNode is null)
             {
                 return false;
             }
 
-            node = node.Next;
-            return (!(node is null));
+            currentNode = currentNode.Next;
+            return (!(currentNode is null));
         }
 
-        public T Current => node.Data;
-
-        public MyIterator(Node<T> node)
+        public void Reset()
         {
-            this.node = node;
+            currentNode = headNode;
         }
+
+        object IEnumerator.Current => currentNode.Data;
+
+        public T Current => currentNode.Data;
+
+        public MyIterator(Node<T> currentNode)
+        {
+            this.currentNode = currentNode;
+            headNode = currentNode;
+        }
+        public void Dispose() { }
     }
 }

@@ -38,10 +38,15 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="..\..\Homework3\Homework3\StringNumber.cs">
+          <Link>StringNumber.cs</Link>
+        </Compile>
+        <Compile Include="..\..\Homework3\Homework3\SumOfTwoNumberStringsExtension.cs">
+          <Link>SumOfTwoNumberStringsExtension.cs</Link>
+        </Compile>
         <Compile Include="BinarySearch.cs" />
         <Compile Include="FibbonacciSequence.cs" />
         <Compile Include="GenericQueue.cs" />
-        <Compile Include="IMyIterator.cs" />
         <Compile Include="MyIterator.cs" />
         <Compile Include="Node.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

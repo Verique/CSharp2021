@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GenericCollectionsLibrary;
+using Homework3;
 
 namespace DemoGenericApplication
 {
@@ -17,11 +18,11 @@ namespace DemoGenericApplication
             }
 
             Console.WriteLine();
-            Console.WriteLine($"Is 83 in first 10 fibonacci numbers? {fibonacci.FindWithBinarySearch(83) > 0}");
-            Console.WriteLine($"Is 21 in first 10 fibonacci numbers? {fibonacci.FindWithBinarySearch(21) > 0}");
-            Console.WriteLine($"21 index : {fibonacci.FindWithBinarySearch(21)}");
+            Console.WriteLine($"Is 83 in first 10 fibonacci numbers? {fibonacci.FindWithBinarySearch(new StringNumber("83")) > 0}");
+            Console.WriteLine($"Is 21 in first 10 fibonacci numbers? {fibonacci.FindWithBinarySearch(new StringNumber("21")) > 0}");
+            Console.WriteLine($"21 index : {fibonacci.FindWithBinarySearch(new StringNumber("21"))}");
 
-            var queue = new GenericQueue<int>();
+            var queue = new GenericQueue<StringNumber>();
             Console.WriteLine("Adding Fibonacci to the queue...");
 
             foreach (var number in fibonacci)
@@ -30,13 +31,11 @@ namespace DemoGenericApplication
             }
 
             Console.WriteLine("Outputting fibonacci through myIterator : ");
-            var iter = queue.GetIterator();
 
-            do
+            foreach (var number in queue)
             {
-                Console.Write($"{iter.Current} ");
+                Console.Write($"{number} ");
             } 
-            while (iter.MoveNext());
         }
     }
 }

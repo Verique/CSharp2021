@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace GenericCollectionsLibrary
 {
-    public class GenericQueue<T>
+    public class GenericQueue<T> : IEnumerable<T>
     {
         private Node<T> head;
 
@@ -56,9 +58,14 @@ namespace GenericCollectionsLibrary
             }
         }
 
-        public IMyIterator<T> GetIterator()
+        public IEnumerator<T> GetEnumerator()
         {
             return new MyIterator<T>(head);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

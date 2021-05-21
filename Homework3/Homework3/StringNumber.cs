@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Homework3
 {
-    public class StringNumber
+    public class StringNumber : IComparable<StringNumber>
     { 
         const string digits = "0123456789";
         
@@ -37,7 +37,7 @@ namespace Homework3
             }
         }
 
-        private int CompareValues(StringNumber other)
+        public int CompareTo(StringNumber other)
         {
             if (this.strValue.Length != other.strValue.Length)
             {
@@ -69,7 +69,7 @@ namespace Homework3
             var strBuilder = new StringBuilder();
             var overflow = false;
 
-            if (this.CompareValues(other) == -1)
+            if (this.CompareTo(other) == -1)
             {
                 var tmp = a;
                 a = b;
@@ -98,7 +98,7 @@ namespace Homework3
             }
             else
             {
-                result.isNegative = (this.CompareValues(other) == -1)? other.isNegative : this.isNegative;
+                result.isNegative = (this.CompareTo(other) == -1)? other.isNegative : this.isNegative;
             }
 
             return result;
@@ -153,6 +153,7 @@ namespace Homework3
 
             return digits[resultIndex];
         }
+
 
         public override string ToString()
         {

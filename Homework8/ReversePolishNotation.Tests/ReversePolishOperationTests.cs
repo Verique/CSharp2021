@@ -6,11 +6,11 @@ namespace ReversePolishNotation.Tests
     public class ReversePolishOperationTests
     {
         [Test]
-        [TestCase("2 3 +", 5)]
+        [TestCase("2 3 + ", 5)]
         [TestCase("-7,5 2 *", -15)]
         [TestCase("5 -9 -", 14)]
         [TestCase("   ", 0)]
-        [TestCase("5 1 2 + 4 * + 3 -", 14)]
+        [TestCase("  5 1 2 + 4 * + 3 -  ", 14)]
         public void Calculate_InputInRPN_ReturnedExpected(string input, double expected)
         {
             Assert.That(ReversePolishOperation.Calculate(input), Is.EqualTo(expected));

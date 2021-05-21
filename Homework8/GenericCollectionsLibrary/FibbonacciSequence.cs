@@ -1,30 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using Homework3;
 
 namespace GenericCollectionsLibrary
 {
     public static class FibonacciSequence
     {
-        public static IEnumerable<int> Fibonacci(int maxIndex)
+        public static IEnumerable<StringNumber> Fibonacci(int maxIndex)
         {
             if (maxIndex < 0)
             {
                 throw new ArgumentException("MaxIndex shouldn't be less than 0");
             }
 
-            yield return 0;
+            var a = new StringNumber("0");
+            var b = new StringNumber("1");
+            
+            yield return a;
 
             if (maxIndex > 0)
             {
-                yield return 1;
+                yield return b;
             }
-
-            var a = 0;
-            var b = 1;
 
             for (var i = 2; i <= maxIndex; i++)
             {
-                var last = a + b;
+                var last = a.Plus(b);
                 yield return last;
                 a = b;
                 b = last;
