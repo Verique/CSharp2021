@@ -16,9 +16,7 @@ namespace ReversePolishNotation
                 return 0;
             }
 
-            input = input.Trim();
-
-            var array = input.Split();
+            var array = input.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var operandOrSign in array)
             {

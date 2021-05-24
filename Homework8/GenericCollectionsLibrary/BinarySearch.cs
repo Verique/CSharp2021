@@ -29,9 +29,9 @@ namespace GenericCollectionsLibrary
 
             var startIndex = 0;
             var lastIndex = array.Length - 1;
-            var currentIndex = array.Length / 2;
+            var currentIndex = (lastIndex - startIndex) / 2;
 
-            while (startIndex != lastIndex)
+            while (startIndex < lastIndex)
             {
                 if (element.CompareTo(array[currentIndex]) == 0)
                 {
@@ -49,7 +49,7 @@ namespace GenericCollectionsLibrary
 
                 currentIndex = startIndex + (lastIndex - startIndex) / 2;
             }
-
+            
             return (element.CompareTo(array[currentIndex]) == 0) ? currentIndex : -1;
         }
 

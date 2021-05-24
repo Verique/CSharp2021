@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace GenericCollectionsLibrary.Tests
@@ -30,14 +31,20 @@ namespace GenericCollectionsLibrary.Tests
         [Test]
         [TestCase(new int[] {}, 1, -1)]
         [TestCase(new int[] {0}, 0, 0)]
+        [TestCase(new int[] {0}, 1, -1)]
+        [TestCase(new int[] {0}, -1, -1)]
         [TestCase(new int[] {0, 1}, 0, 0)]
-        [TestCase(new int[] {1, 6, 20, 46, 80, 223, 1000}, 6, 1)]
-        [TestCase(new int[] {1, 6, 20, 46, 80, 223, 1000}, 80, 4)]
+        [TestCase(new int[] {0, 1}, 1, 1)]
+        [TestCase(new int[] {0, 1}, 2, -1)]
+        [TestCase(new int[] {0, 1}, -2, -1)]
+        [TestCase(new int[] {0, 1, 2, 3, 4}, -2, -1)]
+        [TestCase(new int[] {0, 1, 2, 3 ,4}, 5, -1)]
         [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 6, 1)]
+        [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 1000, 7)]
+        [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 1, 0)]
         [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 80, 5)]
-        [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 223, 6)]
-        [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 14, -1)]
-        [TestCase(new int[] {1, 6, 20, 46, 80, 223, 1000}, 14, -1)]
+        [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 0, -1)]
+        [TestCase(new int[] {1, 6, 11, 20, 46, 80, 223, 1000}, 1001, -1)]
         public void BinarySearch_ArrayIsSorted_ReturnedExpected(int[] array, int element, int expected)
         {
             Assert.That(array.FindWithBinarySearch(element), Is.EqualTo(expected));
