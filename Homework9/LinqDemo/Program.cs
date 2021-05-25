@@ -26,11 +26,6 @@ namespace LinqDemo
         
         private static void WriteCollection(IEnumerable<TestResult> results)
         {
-            if (results is null)
-            {
-                throw new ArgumentNullException(nameof(results));
-            }
-            
             Console.WriteLine("Name | TestName | Date | Mark");
             Console.WriteLine("-------------------------------");
             

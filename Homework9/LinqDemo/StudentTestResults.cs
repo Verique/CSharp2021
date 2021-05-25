@@ -100,11 +100,6 @@ namespace LinqDemo
         private static IEnumerable<TestResult> SearchByCriteria(IEnumerable<TestResult> collection,
             CriteriaFilter criteria, string value)
         {
-            if (criteria is null)
-            {
-                throw new ArgumentNullException(nameof(criteria));
-            }
-
             return criteria.Action(value, collection);
         }
 
