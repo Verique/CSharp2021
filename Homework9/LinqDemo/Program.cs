@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 
 namespace LinqDemo
@@ -10,15 +11,33 @@ namespace LinqDemo
     {
         public static void Main(string[] args)
         {
-            var jsonText = File.ReadAllText("../../input.json");
-            var resultsCollection = (JsonSerializer.Deserialize<IEnumerable<TestResult>>(jsonText) ?? throw new InvalidOperationException()).ToArray();
-
-            StudentTestResults.WriteCollection(resultsCollection, "[ All students ]");
+            var resultsCollection = new StudentTestResults();
+            resultsCollection.LoadFromJsonFile("../../input.json");
+            
+            Console.WriteLine("[ All students ]");
+            WriteCollection(resultsCollection.Collection);
             
             Console.WriteLine("Input your criteria for search : ");
             var str = Console.ReadLine();
             
-            StudentTestResults.WriteCollection(StudentTestResults.Search(resultsCollection, str), "[ Search results ]");
+            Console.WriteLine("[ Search results ]");
+            WriteCollection(resultsCollection.Search(str));
+        }
+        
+        private static void WriteCollection(IEnumerable<TestResult> results)
+        {
+            if (results is null)
+            {
+                throw new ArgumentNullException(nameof(results));
+            }
+            
+            Console.WriteLine("Name | TestName | Date | Mark");
+            Console.WriteLine("-------------------------------");
+            
+            foreach (var testResult in results)
+            {
+                Console.WriteLine(testResult.ToString());
+            }
         }
     }
 }
