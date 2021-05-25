@@ -1,8 +1,10 @@
 ﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace LinqDemo.Tests
 {
+    
     [TestFixture]
     public class StudentTestResultsTests
     {
@@ -29,7 +31,7 @@ namespace LinqDemo.Tests
 
             var actual = target.Search(criteria);
 
-            Assert.That(actual, Is.EqualTo(expected));
+            actual.Should().BeEquivalentTo<TestResult>(expected);
         }
 
         [Test]
@@ -54,7 +56,7 @@ namespace LinqDemo.Tests
 
             var actual = target.Search(criteria);
 
-            Assert.That(actual, Is.EqualTo(expected));
+            actual.Should().BeEquivalentTo<TestResult>(expected);
         }
 
 
@@ -79,7 +81,8 @@ namespace LinqDemo.Tests
 
             var actual = target.Search(criteria);
 
-            Assert.That(actual, Is.EqualTo(expected));
+            actual.Should().BeEquivalentTo<TestResult>(expected);
+
         }
 
         [Test]
@@ -102,8 +105,9 @@ namespace LinqDemo.Tests
             };
 
             var target = new StudentTestResults(collection);
+            Action act = () => target.Search(criteria);
 
-            Assert.That(() => target.Search(criteria), Throws.ArgumentException);
+            act.Should().Throw<ArgumentException>();
         }
     }
 }
