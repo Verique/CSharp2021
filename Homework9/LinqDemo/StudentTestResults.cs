@@ -60,15 +60,11 @@ namespace LinqDemo
             for (var i = 0; i < criterias.Length; i++)
             {
                 criterias[i] = criterias[i].ToLower();
-                
+
                 if (!criterias[i].StartsWith("-")) throw new ArgumentException("Wrong format");
 
-                var currentCriteria = Filters.Where((filter => (filter.Criteria == criterias[i]))).FirstOrDefault();
-
-                if (currentCriteria is null)
-                {
-                    throw new ArgumentException($"There is no {criterias[i]} criteria");
-                }
+                var currentCriteria = Filters.Where((filter => (filter.Criteria == criterias[i]))).FirstOrDefault() ??
+                                      throw new ArgumentException($"There is no {criterias[i]} criteria");
 
                 var currentValue = new StringBuilder("");
 
